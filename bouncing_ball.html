@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Ball with p5.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+</head>
+<body>
+<script>
+let balls = [];
+
+function setup() {
+    createCanvas(400, 400);
+    for (let i = 0; i < 7; i++) {
+        balls.push({
+            x: random(width),
+            y: random(height),
+            vx: random(-3, 3),
+            vy: random(-3, 3),
+            radius: 20,
+        });
+    }
+}
+
+function draw() {
+    background(220);
+    for (let b of balls) {
+        ellipse(b.x, b.y, b.radius * 2, b.radius * 2);
+        b.x += b.vx;
+        b.y += b.vy;
+
+        if (b.x + b.radius > width || b.x - b.radius < 0) {
+            b.vx *= -1;
+        }
+        if (b.y + b.radius > height || b.y - b.radius < 0) {
+            b.vy *= -1;
+        }
+    }
+}
+</script>
+</body>
+</html>
