@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Ball with p5.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+</head>
+<body>
+<script>
+let x = 50;
+let y = 50;
+let vx = 3;
+let vy = 3;
+let radius = 20;
+
+function setup() {
+    createCanvas(400, 400);
+}
+
+function draw() {
+    background(220);
+    ellipse(x, y, radius * 2, radius * 2);
+    x += vx;
+    y += vy;
+
+    if (x + radius > width || x - radius < 0) {
+        vx *= -1;
+    }
+    if (y + radius > height || y - radius < 0) {
+        vy *= -1;
+    }
+}
+</script>
+</body>
+</html>
